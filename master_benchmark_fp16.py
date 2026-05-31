@@ -137,27 +137,27 @@ def run_inference_loop(model, tokenizer, datasets_dict, csv_filenames, error_log
 if __name__ == "__main__":
     MODEL_LIST = [
         # --- COMPLETED MODELS (COMMENTED OUT) ---
-        # "microsoft/phi-1_5",
-        # "TinyLlama/TinyLlama-1.1B-intermediate-step-1431k-3T",
-        # "EleutherAI/pythia-2.8b",
-        # "microsoft/Phi-3-mini-4k-instruct",
-        # "meta-llama/Llama-3.2-1B",
-        # "google/gemma-2b",
-        # "princeton-nlp/Sheared-LLaMA-2.7B",
-        # "openlm-research/open_llama_3b_v2",
-        # "stabilityai/stablelm-3b-4e1t",
-        # "google/gemma-3-1b-it",
-        # "google/gemma-4-E2B-it",
-        # "mistralai/Mistral-7B-v0.1"
-        # "meta-llama/Llama-2-7b-hf",
-        # "HuggingFaceH4/zephyr-7b-beta"
         
         # --- PROBLAMATIC MODELS ---
         # "EleutherAI/gpt-neo-1.3B",
         # "databricks/dolly-v2-3b",
         
         # --- PENDING MODELS ---
-        "Qwen/Qwen2.5-1.5B"
+        "Qwen/Qwen2.5-1.5B",
+        "microsoft/phi-1_5",
+        "TinyLlama/TinyLlama-1.1B-intermediate-step-1431k-3T",
+        "EleutherAI/pythia-2.8b",
+        "microsoft/Phi-3-mini-4k-instruct",
+        "meta-llama/Llama-3.2-1B",
+        "google/gemma-2b",
+        "princeton-nlp/Sheared-LLaMA-2.7B",
+        "openlm-research/open_llama_3b_v2",
+        "stabilityai/stablelm-3b-4e1t",
+        "google/gemma-3-1b-it",
+        "google/gemma-4-E2B-it",
+        "mistralai/Mistral-7B-v0.1"
+        "meta-llama/Llama-2-7b-hf",
+        "HuggingFaceH4/zephyr-7b-beta"
     ] 
 
     OUTPUT_DIRS = [
