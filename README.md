@@ -32,8 +32,8 @@ The framework systematically evaluates inference boundaries across:
 
 ### 1. Clone the repository
 ```bash
-git clone [https://github.com/TNAJEEB/unmasking-the-orchestration-tax.git](https://github.com/TNAJEEB/unmasking-the-orchestration-tax.git)
-cd unmasking-the-orchestration-tax
+git clone https://github.com/TNAJEEB/Unmasking-the-Orchestration-Tax-A-Fine-Grained-Energy-Evaluation-Framework-for-Small-Language-Models
+cd Unmasking-the-Orchestration-Tax-A-Fine-Grained-Energy-Evaluation-Framework-for-Small-Language-Models
 ```
 
 ### 2. Configure Environment
