@@ -1,16 +1,29 @@
-# Unmasking-the-Orchestration-Tax-A-Fine-Grained-Energy-Evaluation-Framework-for-Small-Language-Models
+# Unmasking the Orchestration Tax: A Fine-Grained Energy Evaluation Framework for Small Language Models
 
-## Project Description
+Official code repository and hardware telemetry testbed implementation for the Master's Thesis submitted in partial fulfillment of the requirements for the degree of Master of Science at Aarhus University.
 
-As generative Artificial Intelligence transitions from hyper-scale cloud infrastructures to localized edge environments, optimizing the environmental and hardware sustainability of inference pipelines has become a critical bottleneck[cite: 1]. While macroscopic, software-level benchmarks aggregate power consumption into a singular, end-to-end cost metric, they treat inference as a "black box"—permanently obscuring underlying physical inefficiencies[cite: 1]. 
+## Abstract
+The rapid proliferation of Small Language Models (SLMs) offers a promising paradigm shift for decentralized, resource-constrained edge deployments. However, current evaluation standards (such as the foundational SLM-Bench) utilize macroscopic, system-level measurements that treat inference as an opaque black box, obscuring critical architectural bottlenecks. 
 
-This repository presents a fine-grained, multi-threaded hardware telemetry testbed designed to profile Small Language Models (SLMs) across five distinct operational layers[cite: 1, 2]. Built on an isolated, headless HP Z4 G4 workstation featuring an Intel® Xeon® CPU and an NVIDIA RTX 5060 Ti GPU, this framework bypasses high-level generation wrappers to explicitly isolate component-level power draws and algorithmic boundaries[cite: 1].
+This repository introduces a fine-grained, component-level hardware telemetry framework that extends the SLM-Bench methodology. Deployed on edge-representative hardware, the testbed isolates the exact microjoule energy consumption of the CPU, GPU, and System RAM across discrete execution phases. Key findings reveal an inescapable "Orchestration Tax," where non-accelerator components account for over 30% of the active power budget during token generation, and a "De-Quantization Tax" that inflates active decoding energy by up to 59.5% for ultra-small architectures (<3B parameters) under 4-bit NormalFloat (NF4) compression.
 
-### Key Framework Benchmarking Axis:
-* **Resource & Physical Granularity (Category 1):** Captures real-time GPU power bindings asynchronously via NVML alongside synchronous, zero-overhead microjoule register tracking for the CPU and System RAM using Intel's Running Average Power Limit (RAPL) architecture[cite: 1].
-* **Lifecycle & Execution Granularity (Category 2):** Temporally brackets model configuration, tokenizer setup, and multi-gigabyte model weight tensor transfers from local storage to VRAM to isolate one-time "cold start" penalties from recurring run costs[cite: 1, 2].
-* **Operational Phase Granularity (Category 3):** Forces manual execution loops within the causal decoder architecture to decouple the compute-bound prompt processing (*Prefill Phase*) from the memory-bandwidth-bound token generation (*Decoding Phase*)[cite: 1].
-* **Precision Granularity (Category 4):** Evaluates the physical impact of dynamic weight decompression by profiling native 16-bit floating-point execution (`torch.float16`) against compressed 4-bit NormalFloat (`NF4`) quantization layers[cite: 1].
-* **Data & Domain Granularity (Category 5):** Evaluates hardware performance shifts as a strict function of scaling input and output sequence lengths across a deterministic, 1,000-sample subset across various heuristic tasks[cite: 1].
+## Experimental Environment & Hardware Topography
+To ensure telemetry steady-state reproducibility, hardware dynamic scaling was disabled at the BIOS/OS level.
+- **CPU:** Intel® Xeon® W-2133 Processor (6 Cores, 12 Threads, 3.60 GHz)
+- **GPU:** NVIDIA RTX 5060 Ti (16GB GDDR6 VRAM, Clock locked to 2450 MHz)
+- **RAM:** 128.0 GB ECC DDR4 RAM
+- **OS Baseline:** Headless Ubuntu 22.04.5 LTS (`gdm3` disabled)
 
-The framework extensively profiles a portfolio of 15 unique causal-decoder architectures (ranging from 1B to 7B parameters) across 19 evaluation datasets spanning specialized domains, reading comprehension, reasoning, and conversational dialogue[cite: 1].
+## Core Capabilities & Isolated Granularities
+The framework systematically evaluates inference boundaries across:
+1. **Component-Level (Category 1):** Real-time `pynvml` integration for GPU tracking, synced with native Linux Intel RAPL microjoule register polling for CPU/DRAM tracking.
+2. **Lifecycle Steps (Category 2):** Distinct temporal isolation of tokenization setup vs. multi-gigabyte tensor weight transfers into VRAM.
+3. **Operational Phases (Category 3):** Strict manual control of the neural auto-regressive loop to separate compute-bound *Prefill* paths from memory-bandwidth-bound *Decoding* loops (enforced with `torch.cuda.synchronize()`).
+4. **Precision Variations (Category 4):** Comparative tracking of native 16-bit precision (`torch.float16`) against state-of-the-art 4-bit Quantization (`NF4` configuration via `bitsandbytes`).
+
+## Getting Started
+
+### 1. Clone the repository
+```bash
+git clone [https://github.com/YOUR_USERNAME/unmasking-the-orchestration-tax.git](https://github.com/YOUR_USERNAME/unmasking-the-orchestration-tax.git)
+cd unmasking-the-orchestration-tax
