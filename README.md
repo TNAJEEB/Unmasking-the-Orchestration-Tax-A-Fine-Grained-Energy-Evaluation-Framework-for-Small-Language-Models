@@ -20,10 +20,11 @@ The framework systematically evaluates inference boundaries across:
 2. **Lifecycle Steps (Category 2):** Distinct temporal isolation of tokenization setup vs. multi-gigabyte tensor weight transfers into VRAM.
 3. **Operational Phases (Category 3):** Strict manual control of the neural auto-regressive loop to separate compute-bound *Prefill* paths from memory-bandwidth-bound *Decoding* loops (enforced with `torch.cuda.synchronize()`).
 4. **Precision Variations (Category 4):** Comparative tracking of native 16-bit precision (`torch.float16`) against state-of-the-art 4-bit Quantization (`NF4` configuration via `bitsandbytes`).
+5. **Data & Domain Granularity (Category 5):** Maps hardware performance dynamics directly as a function of scaling input and output sequence lengths across 19 evaluation datasets spanning distinct heuristic tasks.
 
 ## Getting Started
 
 ### 1. Clone the repository
 ```bash
-git clone [https://github.com/YOUR_USERNAME/unmasking-the-orchestration-tax.git](https://github.com/YOUR_USERNAME/unmasking-the-orchestration-tax.git)
+git clone [https://github.com/TNAJEEB/unmasking-the-orchestration-tax.git](https://github.com/TNAJEEB/unmasking-the-orchestration-tax.git)
 cd unmasking-the-orchestration-tax
