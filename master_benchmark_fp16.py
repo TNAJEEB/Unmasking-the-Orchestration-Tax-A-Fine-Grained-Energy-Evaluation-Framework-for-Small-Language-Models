@@ -161,8 +161,8 @@ if __name__ == "__main__":
     ] 
 
     OUTPUT_DIRS = [
-        "/home/talha/thesis/SLM Bench/Implementation_RTX5060/Phi-1.5B", 
-        "/home/talha/thesis_data"                                       
+        "./outputs", 
+        "./thesis_data"                                       
     ]
 
     for d in OUTPUT_DIRS:
