@@ -155,7 +155,7 @@ if __name__ == "__main__":
         "stabilityai/stablelm-3b-4e1t",
         "google/gemma-3-1b-it",
         "google/gemma-4-E2B-it",
-        "mistralai/Mistral-7B-v0.1"
+        "mistralai/Mistral-7B-v0.1",
         "meta-llama/Llama-2-7b-hf",
         "HuggingFaceH4/zephyr-7b-beta"
     ] 
