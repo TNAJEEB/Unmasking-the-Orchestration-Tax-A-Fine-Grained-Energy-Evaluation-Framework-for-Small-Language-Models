@@ -1,3 +1,9 @@
+Copyright (c) 2026 Muhammad Talha Najeeb. All Rights Reserved.
+
+This source code and its associated metrics are the intellectual property of the author. 
+Unauthorized copying, modification, distribution, or reuse of this software for academic, 
+commercial, or personal purposes is strictly prohibited without explicit written permission.
+
 # Unmasking the Orchestration Tax: A Fine-Grained Energy Evaluation Framework for Small Language Models
 
 Official code repository and hardware telemetry testbed implementation for the Master's Thesis submitted in partial fulfillment of the requirements for the degree of Master of Science at Aarhus University.
