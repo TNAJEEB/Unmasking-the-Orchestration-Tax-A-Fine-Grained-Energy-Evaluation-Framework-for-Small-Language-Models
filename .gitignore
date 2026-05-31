@@ -1,0 +1,88 @@
+# ====================================================================
+# UNMASKING THE ORCHESTRATION TAX: EXPERIMENTAL TESTBED .GITIGNORE
+# ====================================================================
+
+# --- Deep Learning Cache & Local Weights (CRUCIAL) ---
+# Blocks Hugging Face from uploading downloaded model layers to GitHub
+.cache/
+huggingface/
+.huggingface/
+cache/
+models/
+weights/
+*.bin
+*.safetensors
+*.pt
+*.pth
+
+# --- Local Telemetry Outputs & Raw Data Logs ---
+# Prevents thousands of rows of experimental metrics from polluting commits
+*.csv
+*.xlsx
+*.log
+outputs/
+./outputs/
+thesis_data/
+./thesis_data/
+*_Error_Log.csv
+*_Inference.csv
+*_Lifecycle.csv
+*_Cat1_3_6_Inference.csv
+*_INT4_Cat1_3_5_6_Inference.csv
+*_Cat2_Lifecycle.csv
+*_INT4_Cat2_Lifecycle.csv
+
+# Legacy absolute path fallback flags
+/home/talha/thesis_data/
+/home/talha/thesis/SLM Bench/Implementation_RTX5060/Phi-1.5B/outputs/
+
+# --- Python & Environment Artifacts ---
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Distribution / packaging
+bin/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+conda-env/
+
+# --- IDEs, Text Editors, & System Junk ---
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# --- Terminal Multiplexers ---
+# Keeps your detached session configurations local
+.tmux/
+*.tmux
