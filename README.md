@@ -28,3 +28,20 @@ The framework systematically evaluates inference boundaries across:
 ```bash
 git clone [https://github.com/TNAJEEB/unmasking-the-orchestration-tax.git](https://github.com/TNAJEEB/unmasking-the-orchestration-tax.git)
 cd unmasking-the-orchestration-tax
+```
+
+### 2. Configure Environment
+```bash
+pip install -r requirements.txt
+```
+
+### 3. Run Telemetry Evaluation Pipelines
+To run the evaluation in native 16-bit floating-point precision:
+```bash
+python master_benchmark_fp16.py
+```
+
+To run the evaluation utilizing quantized 4-bit NormalFloat precision:
+```bash
+python master_benchmark_nf4.py
+```
